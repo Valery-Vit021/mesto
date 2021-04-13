@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./pages/index.css">
+	<title>Mesto.Russia</title>
+</head>
+<body class="page">
+	<div class="content">
+		<header class="header">
+			<img class="header__logo" src="./img/logo-header.svg">
+		</header>
+
+		<main class="main">
+				<section class="usercard">
+					<div class="usercard__header">
+						<img class="usercard__avatar" src="./img/avatar.jpg">
+						<div class="usercard__profile">
+						<div class="usercard__header-info">
+							<h3 class="usercard__name-user"></h3>
+							<span class="usercard__about-me"></span>
+							<button class="usercard__edit"></button>
+						</div>
+						<button class="usercard__add-post"></button>	
+						</div>
+					</div>
+					<div class="usercard__content">
+						<div class="usercard__card">
+							<img class="usercard__img-cards" src="./img/Alan Holy Dormition Monastery.jpg">
+							<div class="usercard__card-info">
+								<p class="usercard__name-cards">Аланский Успенский мужской монастырь</p>
+							<button class="usercard__like"></button>	
+							</div>
+						</div>
+
+						<div class="usercard__card">
+							<img class="usercard__img-cards" src="./img/Тоторс.jpeg">
+							<div class="usercard__card-info">
+								<p class="usercard__name-cards">Тоторс</p>
+								<button class="usercard__like"></button>
+							</div>
+						</div>
+
+						<div class="usercard__card">
+							<img class="usercard__img-cards" src="./img/town-of-the-dead.jpg">
+							<div class="usercard__card-info">
+							<p class="usercard__name-cards">Даргавс</p>
+							<button class="usercard__like"></button>	
+							</div>
+							
+						</div>
+
+						<div class="usercard__card">
+							<img class="usercard__img-cards" src="./img/Tsey Gorge.jpg">
+							<div class="usercard__card-info">
+							<p class="usercard__name-cards">Цейское ущелье</p>
+							<button class="usercard__like"></button>	
+							</div>
+							
+						</div>
+
+						<div class="usercard__card">
+							<img class="usercard__img-cards" src="./img/Караугом.jpeg">
+							<div class="usercard__card-info">
+							<p class="usercard__name-cards">Караугом</p>
+							<button class="usercard__like"></button>	
+							</div>
+							
+						</div>
+						
+						<div class="usercard__card">
+							<img class="usercard__img-cards" src="./img/vladikavkaz.jpeg">
+							<div class="usercard__card-info">
+							<p class="usercard__name-cards">Владикавказ</p>
+							<button class="usercard__like"></button>	
+							</div>
+							
+						</div> 
+					</div>
+				</section>
+		</main>
+
+		<footer class="footer">
+			<p class="footer__copyright">© 2021 Mesto Russia</p>
+		</footer>
+	</div>
+
+<div class="popup-edit hidden">
+	<div class="popup-edit__body">
+		<img class="popup-edit__close" src="./img/Close Icon.svg">
+		<h2 class="popup-edit__edit-profile">Редактировать профиль</h2>
+		<form class="popup-edit__info" name="popup__form">
+			<input class="popup-edit__name-user" type="text" name="name" required="required" placeholder="Имя" value="Жак-Ив Кусто" ></input>
+			<input class="popup-edit__about-me" type="text" name="about__me" required="required" placeholder="Немного о себе" value="Исследователь океан"></input>
+			<button class="popup-edit__save" type="submit">Сохранить</button>
+		</form>	
+	</div>
+</div>
+ <script src="./index.js"></script> 
+</body>
+</html>
+
+
+
+
+
+

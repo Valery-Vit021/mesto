@@ -1,0 +1,24 @@
+.usercard__edit {
+	background: url(../../../img/Vector.svg) no-repeat 50%;
+	background-size: 50%;
+	width: 24px;
+	height: 24px;
+	background-color: black;
+   border: solid 1px white;
+   color: white;
+   text-decoration: none;
+   display: flex;
+   cursor: pointer;
+	align-self: center;
+}
+
+.usercard__edit:hover {
+	opacity: 0.6;
+}
+
+@media screen and (max-width: 650px) {
+	.usercard__edit {
+		width: 18px;
+		height: 18px;
+	}
+}

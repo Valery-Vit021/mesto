@@ -1,0 +1,15 @@
+.popup-edit__close {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: -40px;
+	right: -40px;
+	background-color: transparent;
+	color: white;
+	transform: rotate(45deg);
+	cursor: pointer;
+}
+
+.popup-edit__close:hover {
+	opacity: 0.6;
+}
