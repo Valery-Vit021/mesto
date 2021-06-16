@@ -1,4 +1,4 @@
-.popup-edit__name-user {
+.popup__input {
 	width: 100%;
 	padding: 0 0 8px 0;
 	border: none;
@@ -7,13 +7,17 @@
 	outline: none;
 	transition: 0.3s;
 	font-size: 14px;
-	line-height: 17px;	
-	color: black;
-	text-transform: capitalize;
+	line-height: 17px;
+	color: #000000;
+	align-items: center;
 	margin: 0;
 	margin-bottom: 30px;
 }
 
-.popup-edit__name-user:focus {
+.popup__input:focus {
 	box-shadow: 0px 11px 10px -7px rgba(0, 0, 0, 0.22);
+}
+
+.popup__input:nth-last-child(2) {
+	margin-bottom: 0;
 }

@@ -1,4 +1,4 @@
-.popup-edit__body {
+.popup__body {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -10,4 +10,11 @@
 	flex-direction: column;
 	border-radius: 10px;
 	color: black;
+}
+
+@media screen and (max-width: 650px) {
+	.popup__body {
+		width: 282px;
+		height: 322px;
+		}
 }
