@@ -9,13 +9,13 @@
 <body class="page">
 	<div class="content">
 		<header class="header">
-			<img class="header__logo" src="./img/logo-header.svg">
+			<img class="header__logo" src="./img/logo-header.svg" alt="Ллоготип Mesto">
 		</header>
 
 		<main class="main">
 			<section class="usercard">
 				<div class="usercard__header">
-						<img class="usercard__avatar" src="./img/avatar.jpg">
+						<img class="usercard__avatar" src="./img/avatar.jpg" alt="">
 						<div class="usercard__profile">
 						<div class="usercard__header-info">
 							<h3 class="usercard__name-user">Жак-Ив Кусто</h3>
@@ -28,7 +28,7 @@
 				<div class="usercard__content">
 					<div class="usercard__card  hidden">
 						<button class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" src="">
+						<img class="usercard__img-cards" src="#">
 						<div class="usercard__card-info">
 							<p class="usercard__name-cards"></p>
 							<button class="usercard__like"></button>							
@@ -45,11 +45,11 @@
 
 <div class="popup hidden" id="edit-profile">
 	<div class="popup__body">
-		<img class="popup__close" id="popup-edit-close" src="./img/Close Icon.svg">
+		<img class="popup__close" id="popup-edit-close" src="./img/Close Icon.svg" alt="Кнопка закрыть">
 		<h2 class="popup__title">Редактировать профиль</h2>
 		<form class="popup__form" name="edit-profile">
-			<input class="popup__input popup__input_name" type="text" name="name" required="required" placeholder="Имя" value="Жак-Ив Кусто" ></input>
-			<input class="popup__input popup__input_about-me" type="text" name="about__me" required="required" placeholder="Немного о себе" value="Исследователь океан"></input>
+			<input class="popup__input popup__input_name" type="text" name="name" required="required" placeholder="Имя" value="Жак-Ив Кусто"> 
+			<input class="popup__input popup__input_about-me" type="text" name="about__me" required="required" placeholder="Немного о себе" value="Исследователь океан">
 			<button class="popup__btn" type="submit">Сохранить</button>
 		</form>	
 	</div>
@@ -59,8 +59,8 @@
 		<img class="popup__close" id="popup-new-place-close" src="./img/Close Icon.svg">
 		<h2 class="popup__title">Новое место</h2>
 		<form class="popup__form" name="new-place-form">
-			<input class="popup__input popup__input_name-place" type="text" name="name-place" required="required" placeholder="Название" value="" ></input>
-			<input class="popup__input popup__input_link" type="text" name="link" required="required" placeholder="Ссылка на кртинку" value=""></input>
+			<input class="popup__input popup__input_name-place" type="text" name="name-place" required="required" placeholder="Название" value="">
+			<input class="popup__input popup__input_link" type="text" name="link" required="required" placeholder="Ссылка на кртинку" value="">
 			<button class="popup__btn" id="btn-add-card" type="submit">Создать</button>
 		</form>	
 	</div>
