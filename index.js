@@ -3,9 +3,11 @@
 let profileName = document.querySelector(".usercard__name-user");
 let profileAboutMe = document.querySelector(".usercard__about-me");
 
+
+
 // Инпуты
-let nameInput = document.querySelector(".popup__input_name");
-let jobInput = document.querySelector(".popup__input_about-me");
+let nameInput = document.querySelector(".popup__input_name_user");
+let jobInput = document.querySelector(".popup__input_about_me");
 
 // Управление popup
 let popup = document.querySelector("#edit-profile");
@@ -15,12 +17,13 @@ let btnClose = document.querySelector("#popup-edit-close");
 
 function openPopup() {
 	 popup.classList.add("popup_opened");
-	 nameInput.value = profileName.textContent;
-    jobInput.value = profileAboutMe.textContent;
+	
 }
 
 function closePopup() {
 	 popup.classList.remove("popup_opened");
+	 nameInput.value = profileName.textContent;
+    jobInput.value = profileAboutMe.textContent;
 }
 
 // Открываем попап по клику на иконку "Карандаш"
@@ -44,7 +47,7 @@ btnClose.addEventListener("click", function (event) {
 
 // Находим форму в DOM
 let formElement = document.querySelector("form[name=edit-profile]");
-
+console.log(formElement);
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
