@@ -7,10 +7,6 @@ let profileAboutMe = document.querySelector(".usercard__about-me");
 let nameInput = document.querySelector(".popup__input_name");
 let jobInput = document.querySelector(".popup__input_about-me");
 
-// Сразу присвоим заголовки в инпуты
-nameInput.value = profileName.textContent;
-jobInput.value = profileAboutMe.textContent;
-
 // Управление popup
 let popup = document.querySelector("#edit-profile");
 let btnEdit = document.querySelector(".usercard__edit");
@@ -18,14 +14,13 @@ let btnClose = document.querySelector("#popup-edit-close");
 
 
 function openPopup() {
-    popup.classList.remove("hidden");
+	 popup.classList.add("popup_opened");
+	 nameInput.value = profileName.textContent;
+    jobInput.value = profileAboutMe.textContent;
 }
 
 function closePopup() {
-    popup.classList.add("hidden");
-
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileAboutMe.textContent;
+	 popup.classList.remove("popup_opened");
 }
 
 // Открываем попап по клику на иконку "Карандаш"
@@ -49,7 +44,7 @@ btnClose.addEventListener("click", function (event) {
 
 // Находим форму в DOM
 let formElement = document.querySelector("form[name=edit-profile]");
-console.log(formElement);
+
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
@@ -70,32 +65,4 @@ function formSubmitHandler(evt) {
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
-
-// popup new place
-
-// Управление popup new place
-let popupNewPlace = document.querySelector("#popup-new-place");
-let btnNewPlace = document.querySelector(".usercard__add-post");
-let btnCloseNewPlace = document.querySelector("#popup-new-place-close");
-console.log(popupNewPlace.classList);
-
-//Открываем попап по клику на иконку "+"
-btnNewPlace.addEventListener("click", function (event) {
-    event.preventDefault();
-    popupNewPlace.classList.remove("hidden");
-});
-
-// Закрываем попап по клику вне его
-popupNewPlace.addEventListener("click", function (event) {
-    if (event.target === this) {
-        popupNewPlace.classList.add("hidden");
-        console.log(popupNewPlace.classList);
-    }
-});
-
-// Закрываем попап по клику на иконку "Крестик"
-btnCloseNewPlace.addEventListener("click", function (event) {
-    event.preventDefault();
-    popupNewPlace.classList.add("hidden");
-});
 

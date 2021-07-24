@@ -1,12 +1,12 @@
 .usercard__header {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 50px;
 }
 @media screen and (max-width: 650px) {
-	.usercard__header {
-		flex-direction: column;
-		margin: 0 auto 36px;
-	}
+  .usercard__header {
+    flex-direction: column;
+    margin: 0 auto 36px;
+  }
 }

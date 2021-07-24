@@ -1,17 +1,17 @@
 .popup__body {
-	position: fixed;
-	width: 430px;
-	height: 330px;
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	border-radius: 10px;
-	color: black;
+  position: fixed;
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  color: black;
 }
 
 @media screen and (max-width: 650px) {
-	.popup__body {
-		width: 282px;
-		height: 322px;
-		}
+  .popup__body {
+    width: 282px;
+    height: 322px;
+  }
 }

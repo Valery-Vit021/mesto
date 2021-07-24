@@ -1,17 +1,16 @@
 .header {
-	max-width:  100%;
-	margin: 45px auto 0;
-	display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-content: flex-end;
-	height: 74px;
-	border-bottom: 1px solid #545454;
-	
+  max-width: 100%;
+  margin: 45px auto 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: flex-end;
+  height: 74px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 @media screen and (max-width: 650px) {
-	.header {
-	margin-top: 28px;
-	}
+  .header {
+    margin-top: 28px;
+  }
 }
