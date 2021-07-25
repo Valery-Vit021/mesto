@@ -6,8 +6,8 @@ let profileAboutMe = document.querySelector(".usercard__about-me");
 
 
 // Инпуты
-let nameInput = document.querySelector(".popup__input_name_user");
-let jobInput = document.querySelector(".popup__input_about_me");
+let nameInput = document.querySelector(".popup__input_profile_name-user");
+let jobInput = document.querySelector(".popup__input_profile_about-me");
 
 // Управление popup
 let popup = document.querySelector("#edit-profile");

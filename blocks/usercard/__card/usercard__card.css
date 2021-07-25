@@ -1,6 +1,6 @@
 .usercard__card {
   width: 282px;
-  height: 361px;
+  min-height: 361px;
   color: #000;
   border-radius: 10px;
   overflow: hidden;
