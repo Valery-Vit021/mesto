@@ -25,52 +25,11 @@
 						</div>
 				</section>
 				<section class="usercard__content">
-					<div class="usercard__card">
+					<div class="usercard__card hidden">
 						<button type="button" class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" alt="Аланский Успенский мужской монастырь" src="img/Alan_Holy_Dormition_Monastery.jpg">
+						<img class="usercard__img-cards" alt="#" src="#">
 						<div class="usercard__card-info">
-							<p class="usercard__name-cards">Аланский Успенский мужской монастырь</p>
-							<button type="button" class="usercard__like"></button>							
-						</div>				
-					</div> 
-					<div class="usercard__card">
-						<button type="button" class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" alt="Тоторс" src="img/Тоторс.jpeg">
-						<div class="usercard__card-info">
-							<p class="usercard__name-cards">Тоторс</p>
-							<button type="button" class="usercard__like"></button>							
-						</div>				
-					
-					</div>
-					<div class="usercard__card">
-						<button type="button" class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" alt="Даргавс" src="img/town-of-the-dead.jpg">
-						<div class="usercard__card-info">
-							<p class="usercard__name-cards">Даргавс</p>
-							<button type="button" class="usercard__like"></button>							
-						</div>				
-					</div> 
-					<div class="usercard__card">
-						<button type="button" class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" alt="Цейское ущелье" src="img/Tsey_Gorge.jpg">
-						<div class="usercard__card-info">
-							<p class="usercard__name-cards">Цейское ущелье</p>
-							<button type="button" class="usercard__like"></button>							
-						</div>				
-					</div> 
-					<div class="usercard__card">
-						<button type="button" class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" alt="Караугом" src="img/Караугом.jpeg">
-						<div class="usercard__card-info">
-							<p class="usercard__name-cards">Караугом</p>
-							<button type="button" class="usercard__like"></button>							
-						</div>				
-					</div>
-					 <div class="usercard__card">
-						<button type="button" class="usercard__btn-delete"></button>
-						<img class="usercard__img-cards" alt="Владикавказ" src="img/vladikavkaz.jpeg">
-						<div class="usercard__card-info">
-							<p class="usercard__name-cards">Владикавказ</p>
+							<p class="usercard__name-cards"></p>
 							<button type="button" class="usercard__like"></button>							
 						</div>				
 					</div> 
@@ -82,7 +41,7 @@
 		</footer>
 	</div>
 
-<div class="popup" id="edit-profile">
+<div div class="popup" id="edit-profile">
 	<div class="popup__body">
 		<button type="button" class="popup__close" id="popup-edit-close"></button>
 		<h2 class="popup__title">Редактировать профиль</h2>
@@ -95,13 +54,20 @@
 </div>
 <div class="popup" id="popup-new-place">
 	<div class="popup__body">
-		<button type="button" class="popup__close" id="popup-new-place-close" ></button>
+		<button type="button" class="popup__close" id="popup-new-place-close"></button>
 		<h2 class="popup__title">Новое место</h2>
 		<form class="popup__form" name="new-place-form">
 			<input class="popup__input popup__input_new-place_name" type="text" name="name-place" required="required" placeholder="Название" value="">
 			<input class="popup__input popup__input_new-place_link" type="text" name="link" required="required" placeholder="Ссылка на кртинку" value="">
-			<button class="popup__btn" id="btn-add-card" type="submit">Создать</button>
+			<button class="popup__btn" id="btn-addw-card" type="submit">Создать</button>
 		</form>	
+	</div>
+</div>
+<div class="popup " id="popup-new-place-img">
+	<div class="popup__body-img">
+		<button type="button" class="popup__close" id="popup-img-close" ></button>
+		<img class="popup__img" alt="#" src="#">
+		<p class="popup__name-img"></p>
 	</div>
 </div>
  <script src="./index.js"></script> 

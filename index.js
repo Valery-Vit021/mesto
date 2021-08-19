@@ -3,8 +3,6 @@
 let profileName = document.querySelector(".usercard__name-user");
 let profileAboutMe = document.querySelector(".usercard__about-me");
 
-
-
 // Инпуты
 let nameInput = document.querySelector(".popup__input_profile_name-user");
 let jobInput = document.querySelector(".popup__input_profile_about-me");
@@ -68,4 +66,207 @@ function formSubmitHandler(evt) {
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
+// popup new place
 
+// Управление popup new place
+let popupNewPlace = document.querySelector("#popup-new-place");
+let btnNewPlace = document.querySelector(".usercard__add-post");
+let btnCloseNewPlace = document.querySelector("#popup-new-place-close");
+console.log(popupNewPlace.classList);
+
+//Открываем попап по клику на иконку "+"
+btnNewPlace.addEventListener("click", function () {
+     popupNewPlace.classList.add("popup_opened");
+});
+
+// Закрываем попап по клику вне его
+popupNewPlace.addEventListener("click", function (event) {
+    if (event.target === this) {
+        popupNewPlace.classList.remove("popup_opened");
+        console.log(popupNewPlace.classList);
+    }
+});
+
+// Закрываем попап по клику на иконку "Крестик"
+btnCloseNewPlace.addEventListener("click", function (event) {
+    event.preventDefault();
+    popupNewPlace.classList.remove("popup_opened");
+});
+
+
+/* РАБОТА С КАРТОЧКАМИ */
+
+//Cards
+
+const initialCards = [
+	{
+		 name: 'Аланский Успенский мужской монастырь',
+		 link: './img/Alan_Holy_Dormition_Monastery.jpg'
+	},
+	{
+		 name: 'Тоторс',
+		 link: './img/Тоторс.jpeg'
+	},
+	{
+		 name: 'Даргавс',
+		 link: './img/town-of-the-dead.jpg'
+	},
+	{
+		 name: 'Цейское ущелье',
+		 link: './img/Tsey_Gorge.jpg'
+	},
+	{
+		 name: 'Караугом',
+		 link: './img/Караугом.jpeg',
+	},
+	{
+		 name: 'Владикавказ',
+		 link: './img/vladikavkaz.jpeg'
+	},
+];
+
+// Нахожу контейнер куда добавлять карточки
+const userCardContainer = document.querySelector('.usercard__content'); //куда добав эл
+// Нахожу кнопку 'добавить'
+const addButton = document.querySelector('#btn-add-card'); //кнопка добавить
+// Находим пустую карточку
+const hiddenCart = userCardContainer.querySelector('.usercard__card.hidden');
+
+// Проходим по массиву данных для карточек
+initialCards.forEach(card => {
+	// клонируем пустую карту
+  const clonedCart = hiddenCart.cloneNode(true);
+  // делаем её видимой
+  clonedCart.classList.remove('hidden');
+
+  // находим элемент с именем карты
+  const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
+  // и меняем его содержимое на имя из массива
+  cardNameElement.textContent = card.name;
+
+  // находим элемент с картинкой карты
+  const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
+  // и меняем его содержимое на картинку из массива
+  cardLinkElement.src = card.link;
+
+  // добавляем полученную карточку в контейнер карточек
+  userCardContainer.append(clonedCart);
+});
+
+
+// Находим форму в DOM
+let formNewPlace = document.querySelector("form[name=new-place-form]");
+console.log(formNewPlace);
+// находим input с именем карты
+const cardNameInput = document.querySelector('.popup__input_new-place_name');
+// находим input с картинкой карты
+const cardLinkInput = document.querySelector('.popup__input_new-place_link');
+console.log(formNewPlace);
+console.log(cardNameInput.value);
+
+// Обработчик «отправки» формы, хотя пока
+// она никуда отправляться не будет
+function formSubmitHandlerPlace(evt) {
+	evt.preventDefault();
+  // клонируем пустую карту
+  const clonedNewCart = hiddenCart.cloneNode(true);
+  // делаем её видимой
+  clonedNewCart.classList.remove('hidden');
+
+
+  // находим элемент с именем карты
+  const cardNameNewElement = clonedNewCart.querySelector('.usercard__name-cards');
+  // и меняем его содержимое на имя из input
+  cardNameNewElement.textContent = cardNameInput.value;
+
+  // находим элемент с картинкой карты
+  const cardLinkNewElement = clonedNewCart.querySelector('.usercard__img-cards');
+  // и меняем его содержимое на картинку из input
+  cardLinkNewElement.src = cardLinkInput.value;
+
+  // добавляем полученную карточку в контейнер карточек
+  userCardContainer.prepend(clonedNewCart);
+
+  cardNameInput.value = '';
+  cardLinkInput.value = '';
+  
+
+  popupNewPlace.classList.remove("popup_opened");
+
+  addDeleteCardHandler(clonedNewCart);
+  addLikeHandler(clonedNewCart);
+  addOpenImgHandler(clonedNewCart);
+}
+
+formNewPlace.addEventListener('submit', formSubmitHandlerPlace);
+
+//del and like
+const onClickDelete = event => {
+	const deleteButton = event.currentTarget;
+	const deletingCard = deleteButton.closest('.usercard__card');
+
+	deletingCard.remove();
+};
+const addDeleteCardHandler = deletingCard => {
+	deletingCard.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
+};
+
+
+// Привязываем обработчик клика на иконку Like
+const onClickLike = event => {
+	const likeButton = event.currentTarget;
+
+	if (likeButton.classList.contains('usercard__like_active')) {
+		 likeButton.classList.remove('usercard__like_active');
+	} else {
+		 likeButton.classList.add('usercard__like_active');
+	}
+}
+const addLikeHandler = card => {
+	const likeButton = card.querySelector('.usercard__like');
+
+	likeButton.addEventListener('click', onClickLike);
+}
+
+// Popup place img
+
+let nameCard = document.querySelector(".usercard__name-cards");
+let imgCard = document.querySelector(".usercard__img-cards");
+let popupImge = document.querySelector("#popup-new-place-img");
+let btnClosePopupImg = document.querySelector('#popup-img-close');
+
+const onClickOpenImg = event => {
+	const clickImg = event.currentTarget;
+	const clikedCard = clickImg.closest('.usercard__card');
+	document.querySelector('#popup-new-place-img').querySelector('.popup__img').src = clikedCard.querySelector('.usercard__img-cards').src;
+	document.querySelector('#popup-new-place-img').querySelector('.popup__name-img').textContent = clikedCard.textContent;
+
+	popupImge.classList.add("popup_opened");
+}
+
+const addOpenImgHandler = clikedCard=> {
+	clikedCard.querySelector('.usercard__img-cards').addEventListener('click', onClickOpenImg);
+};
+
+// Закрываем попап по клику вне его
+popupImge.addEventListener("click", function (event) {
+	if (event.target === this) {
+		popupImge.classList.remove("popup_opened");
+	}
+});
+
+// Закрываем попап по клику на иконку "Крестик"
+btnClosePopupImg.addEventListener("click", function (event) {
+	event.preventDefault();
+	popupImge.classList.remove("popup_opened");
+});
+
+// Найдём все карточки
+const cardsArray = document.querySelectorAll('.usercard__card');
+// И привяжем необходимые обработчики
+cardsArray.forEach(card => {
+	addDeleteCardHandler(card);
+	addLikeHandler(card);
+	addOpenImgHandler(card);
+	
+});
