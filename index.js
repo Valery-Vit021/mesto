@@ -215,12 +215,7 @@ const addDeleteCardHandler = deletingCard => {
 // Привязываем обработчик клика на иконку Like
 const onClickLike = event => {
 	const likeButton = event.currentTarget;
-
-	if (likeButton.classList.contains('usercard__like_active')) {
-		 likeButton.classList.remove('usercard__like_active');
-	} else {
-		 likeButton.classList.add('usercard__like_active');
-	}
+	 likeButton.classList.toggle('usercard__like_active');
 }
 const addLikeHandler = card => {
 	const likeButton = card.querySelector('.usercard__like');
