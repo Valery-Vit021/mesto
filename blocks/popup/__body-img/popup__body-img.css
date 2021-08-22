@@ -1,5 +1,5 @@
 .popup__body-img {
-	position: fixed;
-	display: flex;
-	flex-direction: column;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
 }

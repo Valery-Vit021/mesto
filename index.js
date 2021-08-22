@@ -1,16 +1,16 @@
 //Записываем содержимое заголовков в поля
 // Заголовки
-let profileName = document.querySelector(".usercard__name-user");
-let profileAboutMe = document.querySelector(".usercard__about-me");
+const profileName = document.querySelector(".usercard__name-user");
+const profileAboutMe = document.querySelector(".usercard__about-me");
 
 // Инпуты
-let nameInput = document.querySelector(".popup__input_profile_name-user");
-let jobInput = document.querySelector(".popup__input_profile_about-me");
+const nameInput = document.querySelector(".popup__input_profile_name-user");
+const jobInput = document.querySelector(".popup__input_profile_about-me");
 
 // Управление popup
-let popup = document.querySelector("#edit-profile");
-let btnEdit = document.querySelector(".usercard__edit");
-let btnClose = document.querySelector("#popup-edit-close");
+const popup = document.querySelector("#edit-profile");
+const btnEdit = document.querySelector(".usercard__edit");
+const btnClose = document.querySelector("#popup-edit-close");
 
 
 function openPopup() {
@@ -44,20 +44,20 @@ btnClose.addEventListener("click", function (event) {
 });
 
 // Находим форму в DOM
-let formElement = document.querySelector("form[name=edit-profile]");
-console.log(formElement);
+const formElement = document.querySelector("form[name=edit-profile]");
+
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
 // Получите значение полей jobInput и nameInput из свойства value
-    let NameUser = nameInput.value;
-    let AboutUser = jobInput.value;
+    const nameUser = nameInput.value;
+    const aboutUser = jobInput.value;
 
 // Вставьте новые значения с помощью textContent
-    profileName.textContent = NameUser;
-    profileAboutMe.textContent = AboutUser;
+    profileName.textContent = nameUser;
+    profileAboutMe.textContent = aboutUser;
 
     closePopup();
 }
@@ -69,10 +69,10 @@ formElement.addEventListener('submit', formSubmitHandler);
 // popup new place
 
 // Управление popup new place
-let popupNewPlace = document.querySelector("#popup-new-place");
-let btnNewPlace = document.querySelector(".usercard__add-post");
-let btnCloseNewPlace = document.querySelector("#popup-new-place-close");
-console.log(popupNewPlace.classList);
+const popupNewPlace = document.querySelector("#popup-new-place");
+const btnNewPlace = document.querySelector(".usercard__add-post");
+const btnCloseNewPlace = document.querySelector("#popup-new-place-close");
+
 
 //Открываем попап по клику на иконку "+"
 btnNewPlace.addEventListener("click", function () {
@@ -83,8 +83,7 @@ btnNewPlace.addEventListener("click", function () {
 popupNewPlace.addEventListener("click", function (event) {
     if (event.target === this) {
         popupNewPlace.classList.remove("popup_opened");
-        console.log(popupNewPlace.classList);
-    }
+      }
 });
 
 // Закрываем попап по клику на иконку "Крестик"
@@ -130,15 +129,14 @@ const userCardContainer = document.querySelector('.usercard__content'); //куд
 // Нахожу кнопку 'добавить'
 const addButton = document.querySelector('#btn-add-card'); //кнопка добавить
 // Находим пустую карточку
-const hiddenCart = userCardContainer.querySelector('.usercard__card.hidden');
+const hiddenCart = document.querySelector('.usercard__blank-card').content;
+console.log('hiddenCart');
 
 // Проходим по массиву данных для карточек
 initialCards.forEach(card => {
 	// клонируем пустую карту
   const clonedCart = hiddenCart.cloneNode(true);
-  // делаем её видимой
-  clonedCart.classList.remove('hidden');
-
+ 
   // находим элемент с именем карты
   const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
   // и меняем его содержимое на имя из массива
@@ -155,24 +153,21 @@ initialCards.forEach(card => {
 
 
 // Находим форму в DOM
-let formNewPlace = document.querySelector("form[name=new-place-form]");
-console.log(formNewPlace);
+const formNewPlace = document.querySelector("form[name=new-place-form]");
+
 // находим input с именем карты
 const cardNameInput = document.querySelector('.popup__input_new-place_name');
 // находим input с картинкой карты
 const cardLinkInput = document.querySelector('.popup__input_new-place_link');
-console.log(formNewPlace);
-console.log(cardNameInput.value);
+
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandlerPlace(evt) {
 	evt.preventDefault();
   // клонируем пустую карту
-  const clonedNewCart = hiddenCart.cloneNode(true);
-  // делаем её видимой
-  clonedNewCart.classList.remove('hidden');
-
+  const clonedNewCart = hiddenCart.querySelector('.usercard__card').cloneNode(true);
+  
 
   // находим элемент с именем карты
   const cardNameNewElement = clonedNewCart.querySelector('.usercard__name-cards');
@@ -230,10 +225,10 @@ const addLikeHandler = card => {
 
 // Popup place img
 
-let nameCard = document.querySelector(".usercard__name-cards");
-let imgCard = document.querySelector(".usercard__img-cards");
-let popupImge = document.querySelector("#popup-new-place-img");
-let btnClosePopupImg = document.querySelector('#popup-img-close');
+const nameCard = document.querySelector(".usercard__name-cards");
+const imgCard = document.querySelector(".usercard__img-cards");
+const popupImge = document.querySelector("#popup-new-place-img");
+const btnClosePopupImg = document.querySelector('#popup-img-close');
 
 const onClickOpenImg = event => {
 	const clickImg = event.currentTarget;
