@@ -8,39 +8,37 @@ const nameInput = document.querySelector(".popup__input_profile_name-user");
 const jobInput = document.querySelector(".popup__input_profile_about-me");
 
 // Управление popup
-const popup = document.querySelector("#edit-profile");
+const popupEdit = document.querySelector("#edit-profile");
 const btnEdit = document.querySelector(".usercard__edit");
 const btnClose = document.querySelector("#popup-edit-close");
 
 
-function openPopup() {
-	 popup.classList.add("popup_opened");
-	
+function openPopup(popup) {
+	popup.classList.add("popup_opened");
 }
 
-function closePopup() {
+
+function closePopup(popup) {
 	 popup.classList.remove("popup_opened");
-	 nameInput.value = profileName.textContent;
-    jobInput.value = profileAboutMe.textContent;
 }
 
 // Открываем попап по клику на иконку "Карандаш"
-btnEdit.addEventListener("click", function (event) {
-    event.preventDefault();
-    openPopup();
+btnEdit.addEventListener("click", function () {
+	   openPopup(popupEdit);
+		nameInput.value = profileName.textContent;
+		jobInput.value = profileAboutMe.textContent;
 });
 
 // Закрываем попап по клику вне его
-popup.addEventListener("click", function (event) {
+popupEdit.addEventListener("click", function (event) {
     if (event.target === this) {
-        closePopup();
+        closePopup(popupEdit);
     }
 });
 
 // Закрываем попап по клику на иконку "Крестик"
-btnClose.addEventListener("click", function (event) {
-    event.preventDefault();
-    closePopup();
+btnClose.addEventListener("click", function () {
+     closePopup(popupEdit);
 });
 
 // Находим форму в DOM
@@ -59,7 +57,7 @@ function formSubmitHandler(evt) {
     profileName.textContent = nameUser;
     profileAboutMe.textContent = aboutUser;
 
-    closePopup();
+    closePopup(popupEdit);
 }
 
 // Прикрепляем обработчик к форме:
@@ -76,20 +74,20 @@ const btnCloseNewPlace = document.querySelector("#popup-new-place-close");
 
 //Открываем попап по клику на иконку "+"
 btnNewPlace.addEventListener("click", function () {
-     popupNewPlace.classList.add("popup_opened");
+	openPopup(popupNewPlace);
 });
 
 // Закрываем попап по клику вне его
 popupNewPlace.addEventListener("click", function (event) {
     if (event.target === this) {
-        popupNewPlace.classList.remove("popup_opened");
+		closePopup(popupNewPlace);
       }
 });
 
 // Закрываем попап по клику на иконку "Крестик"
 btnCloseNewPlace.addEventListener("click", function (event) {
-    event.preventDefault();
-    popupNewPlace.classList.remove("popup_opened");
+   
+   closePopup(popupNewPlace);
 });
 
 
@@ -187,7 +185,7 @@ function formSubmitHandlerPlace(evt) {
   // добавляем полученную карточку в контейнер карточек
   userCardContainer.prepend(clonedNewCart);
 
-  popupNewPlace.classList.remove("popup_opened");
+  closePopup(popupNewPlace);
 
   formNewPlace.reset();
 
@@ -234,7 +232,7 @@ const onClickOpenImg = event => {
 	document.querySelector('#popup-new-place-img').querySelector('.popup__img').src = clikedCard.querySelector('.usercard__img-cards').src;
 	document.querySelector('#popup-new-place-img').querySelector('.popup__name-img').textContent = clikedCard.textContent;
 	document.querySelector('#popup-new-place-img').querySelector('.popup__img').alt =clikedCard.querySelector(".usercard__name-cards").textContent;
-	popupImge.classList.add("popup_opened");
+	openPopup(popupImge);
 }
 
 const addOpenImgHandler = clikedCard=> {
@@ -244,14 +242,13 @@ const addOpenImgHandler = clikedCard=> {
 // Закрываем попап по клику вне его
 popupImge.addEventListener("click", function (event) {
 	if (event.target === this) {
-		popupImge.classList.remove("popup_opened");
+		closePopup(popupImge)
 	}
 });
 
 // Закрываем попап по клику на иконку "Крестик"
 btnClosePopupImg.addEventListener("click", function (event) {
-	event.preventDefault();
-	popupImge.classList.remove("popup_opened");
+	closePopup(popupImge)
 });
 
 // Найдём все карточки
