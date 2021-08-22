@@ -187,11 +187,9 @@ function formSubmitHandlerPlace(evt) {
   // добавляем полученную карточку в контейнер карточек
   userCardContainer.prepend(clonedNewCart);
 
-  cardNameInput.value = '';
-  cardLinkInput.value = '';
-  
-
   popupNewPlace.classList.remove("popup_opened");
+
+  formNewPlace.reset();
 
   addDeleteCardHandler(clonedNewCart);
   addLikeHandler(clonedNewCart);
