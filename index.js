@@ -146,6 +146,8 @@ initialCards.forEach(card => {
   const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
   // и меняем его содержимое на картинку из массива
   cardLinkElement.src = card.link;
+  // добовляем alt
+  cardLinkElement.alt = card.name;
 
   // добавляем полученную карточку в контейнер карточек
   userCardContainer.append(clonedCart);
@@ -178,6 +180,9 @@ function formSubmitHandlerPlace(evt) {
   const cardLinkNewElement = clonedNewCart.querySelector('.usercard__img-cards');
   // и меняем его содержимое на картинку из input
   cardLinkNewElement.src = cardLinkInput.value;
+
+   // добовляем alt
+	clonedNewCart.querySelector('.usercard__img-cards').alt = cardNameInput.value;
 
   // добавляем полученную карточку в контейнер карточек
   userCardContainer.prepend(clonedNewCart);
@@ -235,7 +240,7 @@ const onClickOpenImg = event => {
 	const clikedCard = clickImg.closest('.usercard__card');
 	document.querySelector('#popup-new-place-img').querySelector('.popup__img').src = clikedCard.querySelector('.usercard__img-cards').src;
 	document.querySelector('#popup-new-place-img').querySelector('.popup__name-img').textContent = clikedCard.textContent;
-
+	document.querySelector('#popup-new-place-img').querySelector('.popup__img').alt =clikedCard.querySelector(".usercard__name-cards").textContent;
 	popupImge.classList.add("popup_opened");
 }
 
