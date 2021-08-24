@@ -11,6 +11,35 @@ const jobInput = document.querySelector(".popup__input_profile_about-me");
 const popupEdit = document.querySelector("#edit-profile");
 const btnEdit = document.querySelector(".usercard__edit");
 const btnClose = document.querySelector("#popup-edit-close");
+// Находим форму в DOM
+const formElement = document.querySelector("form[name=edit-profile]");
+
+/*    popup new place     */
+
+const popupNewPlace = document.querySelector("#popup-new-place");
+const btnNewPlace = document.querySelector(".usercard__add-post");
+const btnCloseNewPlace = document.querySelector("#popup-new-place-close");
+// Нахожу контейнер куда добавлять карточки
+const userCardContainer = document.querySelector('.usercard__content'); //куда добав эл
+// Нахожу кнопку 'добавить'
+const addButton = document.querySelector('#btn-add-card'); //кнопка добавить
+// Находим пустую карточку
+const hiddenCart = document.querySelector('.usercard__blank-card').content;
+// Находим форму в DOM
+const formNewPlace = document.querySelector("form[name=new-place-form]");
+// находим input с именем карты
+const cardNameInput = document.querySelector('.popup__input_new-place_name');
+// находим input с картинкой карты
+const cardLinkInput = document.querySelector('.popup__input_new-place_link');
+
+/*      Popup place img      */
+
+const nameCard = document.querySelector(".usercard__name-cards");
+const imgCard = document.querySelector(".usercard__img-cards");
+const popupImge = document.querySelector("#popup-new-place-img");
+const btnClosePopupImg = document.querySelector('#popup-img-close');
+
+
 
 
 function openPopup(popup) {
@@ -41,8 +70,7 @@ btnClose.addEventListener("click", function () {
      closePopup(popupEdit);
 });
 
-// Находим форму в DOM
-const formElement = document.querySelector("form[name=edit-profile]");
+
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -64,13 +92,9 @@ function formSubmitHandler(evt) {
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
-// popup new place
+
 
 // Управление popup new place
-const popupNewPlace = document.querySelector("#popup-new-place");
-const btnNewPlace = document.querySelector(".usercard__add-post");
-const btnCloseNewPlace = document.querySelector("#popup-new-place-close");
-
 
 //Открываем попап по клику на иконку "+"
 btnNewPlace.addEventListener("click", function () {
@@ -122,87 +146,15 @@ const initialCards = [
 	},
 ];
 
-// Нахожу контейнер куда добавлять карточки
-const userCardContainer = document.querySelector('.usercard__content'); //куда добав эл
-// Нахожу кнопку 'добавить'
-const addButton = document.querySelector('#btn-add-card'); //кнопка добавить
-// Находим пустую карточку
-const hiddenCart = document.querySelector('.usercard__blank-card').content;
-console.log('hiddenCart');
-
-// Проходим по массиву данных для карточек
-initialCards.forEach(card => {
-	// клонируем пустую карту
-  const clonedCart = hiddenCart.cloneNode(true);
- 
-  // находим элемент с именем карты
-  const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
-  // и меняем его содержимое на имя из массива
-  cardNameElement.textContent = card.name;
-
-  // находим элемент с картинкой карты
-  const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
-  // и меняем его содержимое на картинку из массива
-  cardLinkElement.src = card.link;
-  // добовляем alt
-  cardLinkElement.alt = card.name;
-
-  // добавляем полученную карточку в контейнер карточек
-  userCardContainer.append(clonedCart);
-});
-
-
-// Находим форму в DOM
-const formNewPlace = document.querySelector("form[name=new-place-form]");
-
-// находим input с именем карты
-const cardNameInput = document.querySelector('.popup__input_new-place_name');
-// находим input с картинкой карты
-const cardLinkInput = document.querySelector('.popup__input_new-place_link');
-
-
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function formSubmitHandlerPlace(evt) {
-	evt.preventDefault();
-  // клонируем пустую карту
-  const clonedNewCart = hiddenCart.querySelector('.usercard__card').cloneNode(true);
-  
-
-  // находим элемент с именем карты
-  const cardNameNewElement = clonedNewCart.querySelector('.usercard__name-cards');
-  // и меняем его содержимое на имя из input
-  cardNameNewElement.textContent = cardNameInput.value;
-
-  // находим элемент с картинкой карты
-  const cardLinkNewElement = clonedNewCart.querySelector('.usercard__img-cards');
-  // и меняем его содержимое на картинку из input
-  cardLinkNewElement.src = cardLinkInput.value;
-
-   // добовляем alt
-	clonedNewCart.querySelector('.usercard__img-cards').alt = cardNameInput.value;
-
-  // добавляем полученную карточку в контейнер карточек
-  userCardContainer.prepend(clonedNewCart);
-
-  closePopup(popupNewPlace);
-
-  formNewPlace.reset();
-
-  addDeleteCardHandler(clonedNewCart);
-  addLikeHandler(clonedNewCart);
-  addOpenImgHandler(clonedNewCart);
-}
-
-formNewPlace.addEventListener('submit', formSubmitHandlerPlace);
 
 //del and like
 const onClickDelete = event => {
 	const deleteButton = event.currentTarget;
 	const deletingCard = deleteButton.closest('.usercard__card');
-
+	
 	deletingCard.remove();
 };
+
 const addDeleteCardHandler = deletingCard => {
 	deletingCard.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
 };
@@ -212,19 +164,14 @@ const addDeleteCardHandler = deletingCard => {
 const onClickLike = event => {
 	const likeButton = event.currentTarget;
 	 likeButton.classList.toggle('usercard__like_active');
-}
+};
 const addLikeHandler = card => {
 	const likeButton = card.querySelector('.usercard__like');
 
 	likeButton.addEventListener('click', onClickLike);
-}
+};
 
 // Popup place img
-
-const nameCard = document.querySelector(".usercard__name-cards");
-const imgCard = document.querySelector(".usercard__img-cards");
-const popupImge = document.querySelector("#popup-new-place-img");
-const btnClosePopupImg = document.querySelector('#popup-img-close');
 
 const onClickOpenImg = event => {
 	const clickImg = event.currentTarget;
@@ -233,7 +180,7 @@ const onClickOpenImg = event => {
 	document.querySelector('#popup-new-place-img').querySelector('.popup__name-img').textContent = clikedCard.textContent;
 	document.querySelector('#popup-new-place-img').querySelector('.popup__img').alt =clikedCard.querySelector(".usercard__name-cards").textContent;
 	openPopup(popupImge);
-}
+};
 
 const addOpenImgHandler = clikedCard=> {
 	clikedCard.querySelector('.usercard__img-cards').addEventListener('click', onClickOpenImg);
@@ -243,12 +190,12 @@ const addOpenImgHandler = clikedCard=> {
 popupImge.addEventListener("click", function (event) {
 	if (event.target === this) {
 		closePopup(popupImge)
-	}
+	};
 });
 
 // Закрываем попап по клику на иконку "Крестик"
 btnClosePopupImg.addEventListener("click", function (event) {
-	closePopup(popupImge)
+	closePopup(popupImge);
 });
 
 // Найдём все карточки
@@ -260,3 +207,57 @@ cardsArray.forEach(card => {
 	addOpenImgHandler(card);
 	
 });
+
+// Добовляем карточки 
+
+function createCard (name, link){
+	// клонируем пустую карту
+	const clonedCart = hiddenCart.cloneNode(true);
+	// находим элемент с именем карты
+	const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
+	// и меняем его содержимое на имя из 
+	cardNameElement.textContent = name;
+	// находим элемент с картинкой карты
+	const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
+	// и меняем его содержимое на картинку из массива
+	cardLinkElement.src = link;
+	// добовляем alt
+	cardLinkElement.alt = name;
+
+	addDeleteCardHandler(clonedCart);
+	addLikeHandler(clonedCart);
+	addOpenImgHandler(clonedCart);
+	
+	return clonedCart;	
+}
+
+// добавления карточки в контейнер
+function renderCard(card) {
+	const newCard = createCard (card.name, card.link);
+	userCardContainer.prepend(newCard);
+}
+
+// Проходим по массиву данных для карточек
+initialCards.forEach(card => {
+	renderCard(card);
+});
+
+
+// Обработчик «отправки» формы, хотя пока
+// она никуда отправляться не будет
+function formSubmitHandlerPlace(evt) {
+	evt.preventDefault();
+
+	const cardObject = {};
+    cardObject.name = cardNameInput.value;
+    cardObject.link = cardLinkInput.value;
+
+	renderCard(cardObject);
+
+  closePopup(popupNewPlace);
+
+  formNewPlace.reset();
+ 
+}
+
+formNewPlace.addEventListener('submit', formSubmitHandlerPlace);
