@@ -155,20 +155,11 @@ const onClickDelete = event => {
 	deletingCard.remove();
 };
 
-const addDeleteCardHandler = deletingCard => {
-	deletingCard.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
-};
-
 
 // Привязываем обработчик клика на иконку Like
 const onClickLike = event => {
 	const likeButton = event.currentTarget;
 	 likeButton.classList.toggle('usercard__like_active');
-};
-const addLikeHandler = card => {
-	const likeButton = card.querySelector('.usercard__like');
-
-	likeButton.addEventListener('click', onClickLike);
 };
 
 // Popup place img
@@ -182,9 +173,6 @@ const onClickOpenImg = event => {
 	openPopup(popupImge);
 };
 
-const addOpenImgHandler = clikedCard=> {
-	clikedCard.querySelector('.usercard__img-cards').addEventListener('click', onClickOpenImg);
-};
 
 // Закрываем попап по клику вне его
 popupImge.addEventListener("click", function (event) {
@@ -200,13 +188,7 @@ btnClosePopupImg.addEventListener("click", function (event) {
 
 // Найдём все карточки
 const cardsArray = document.querySelectorAll('.usercard__card');
-// И привяжем необходимые обработчики
-cardsArray.forEach(card => {
-	addDeleteCardHandler(card);
-	addLikeHandler(card);
-	addOpenImgHandler(card);
-	
-});
+
 
 // Добовляем карточки 
 
@@ -223,11 +205,14 @@ function createCard (name, link){
 	cardLinkElement.src = link;
 	// добовляем alt
 	cardLinkElement.alt = name;
+	//del
+	clonedCart.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
+	//like
+	const likeButton = clonedCart.querySelector('.usercard__like');
+	likeButton.addEventListener('click', onClickLike);
+	//превью
+	clonedCart.querySelector('.usercard__img-cards').addEventListener('click', onClickOpenImg);
 
-	addDeleteCardHandler(clonedCart);
-	addLikeHandler(clonedCart);
-	addOpenImgHandler(clonedCart);
-	
 	return clonedCart;	
 }
 

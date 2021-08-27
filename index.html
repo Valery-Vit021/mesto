@@ -48,9 +48,9 @@
 	<div class="popup__body">
 		<button type="button" class="popup__close" id="popup-edit-close"></button>
 		<h2 class="popup__title">Редактировать профиль</h2>
-		<form class="popup__form" name="edit-profile">
-			<input class="popup__input popup__input_profile_name-user" type="text" name="name" required="required" minlength="2" maxlength="40" placeholder="Имя" value="Жак-Ив Кусто"> 
-			<input class="popup__input popup__input_profile_about-me" type="text" name="about__me" required="required" minlength="2" maxlength="200" placeholder="Немного о себе" value="Исследователь океан">
+		<form class="popup__form" name="edit-profile" novalidate>
+			<input class="popup__input popup__input_type_error popup__input_profile_name-user" type="text" name="name" required="required" minlength="2" maxlength="40" placeholder="Имя" value="Жак-Ив Кусто"> 
+			<input class="popup__input popup__input_type_error popup__input_profile_about-me" type="text" name="about__me" required="required" minlength="2" maxlength="200" placeholder="Немного о себе" value="Исследователь океан">
 			<button class="popup__btn" type="submit">Сохранить</button>
 		</form>	
 	</div>
@@ -59,9 +59,9 @@
 	<div class="popup__body">
 		<button type="button" class="popup__close" id="popup-new-place-close"></button>
 		<h2 class="popup__title">Новое место</h2>
-		<form class="popup__form" name="new-place-form">
-			<input class="popup__input popup__input_new-place_name" type="text" name="name-place" required="required" placeholder="Название" value="">
-			<input class="popup__input popup__input_new-place_link" type="url" name="link" required="required" placeholder="Ссылка на кртинку" value="">
+		<form class="popup__form" name="new-place-form" novalidate>
+			<input class="popup__input popup__input_type_error popup__input_new-place_name" type="text" name="name-place" required="required" placeholder="Название" value="">
+			<input class="popup__input popup__input_type_error popup__input_new-place_link" type="url" name="link" required="required" placeholder="Ссылка на кртинку" value="">
 			<button class="popup__btn" id="btn-addw-card" type="submit">Создать</button>
 		</form>	
 	</div>
