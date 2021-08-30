@@ -5,10 +5,8 @@ const formProfileUser = document.querySelector("form[name=edit-profile]");
  const showInputError = (element) => {
 	const errorElement = document.querySelector(`#${element.id}-error`);
 	element.classList.add('popup__input_type_error');
-	console.log(element.classList);
 	// Показываем сообщение об ошибке
 	errorElement.classList.add('error_active');
-	console.log(errorElement);
  };
 
 // Функция, которая удаляет класс с ошибкой
@@ -56,8 +54,7 @@ function validateField (input) {
 		hideInputError(input);
 	 }
 	errorElement.innerText = input.validationMessage;
-	console.log(errorElement.innerText);
-
+	
 }
 
 function setActiveButtonState(button, state){

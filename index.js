@@ -213,19 +213,15 @@ function createCard (name, link){
 
 	// находим элемент с именем карты
 	const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
-	console.log(cardNameElement);
 	// и меняем его содержимое на имя из 
 	cardNameElement.textContent = name;
-	console.log(cardNameElement.textContent);
-	// находим элемент с картинкой карты
+		// находим элемент с картинкой карты
 	const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
 	// и меняем его содержимое на картинку из массива
 	cardLinkElement.src = link;
-	console.log(cardLinkElement.src);
-	// добовляем alt
+		// добовляем alt
 	cardLinkElement.alt = name;
-	console.log(cardLinkElement.alt);
-	//del
+		//del
 	clonedCart.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
 	//like
 	const likeButton = clonedCart.querySelector('.usercard__like');
