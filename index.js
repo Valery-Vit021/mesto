@@ -21,7 +21,7 @@ const btnNewPlace = document.querySelector(".usercard__add-post");
 const btnCloseNewPlace = document.querySelector("#popup-new-place-close");
 // Нахожу контейнер куда добавлять карточки
 const userCardContainer = document.querySelector('.usercard__content'); //куда добав эл
-// Нахожу кнопку 'добавить'
+// Нахожу кнопку 'создать'
 const addButton = document.querySelector('#btn-add-card'); //кнопка добавить
 // Находим пустую карточку
 const hiddenCart = document.querySelector('.usercard__blank-card').content;
@@ -44,11 +44,13 @@ const btnClosePopupImg = document.querySelector('#popup-img-close');
 
 function openPopup(popup) {
 	popup.classList.add("popup_opened");
+	document.addEventListener('keydown', closePopupClickEsc);
 }
 
 
 function closePopup(popup) {
 	 popup.classList.remove("popup_opened");
+	 document.removeEventListener('keydown', closePopupClickEsc);
 }
 
 // Открываем попап по клику на иконку "Карандаш"
@@ -56,6 +58,7 @@ btnEdit.addEventListener("click", function () {
 	   openPopup(popupEdit);
 		nameInput.value = profileName.textContent;
 		jobInput.value = profileAboutMe.textContent;
+		resetSppanError(popupEdit);
 });
 
 // Закрываем попап по клику вне его
@@ -70,6 +73,14 @@ btnClose.addEventListener("click", function () {
      closePopup(popupEdit);
 });
 
+// Закрываем попап по клику на иконку "Escape"
+function closePopupClickEsc(evt) {
+	const activePopup = document.querySelector('.popup_opened');
+ 
+	if (evt.key === 'Escape') {
+	  closePopup(activePopup);
+	}
+ };
 
 
 // Обработчик «отправки» формы, хотя пока
@@ -99,19 +110,22 @@ formElement.addEventListener('submit', formSubmitHandler);
 //Открываем попап по клику на иконку "+"
 btnNewPlace.addEventListener("click", function () {
 	openPopup(popupNewPlace);
+	resetSppanError(popupNewPlace);
 });
 
 // Закрываем попап по клику вне его
 popupNewPlace.addEventListener("click", function (event) {
     if (event.target === this) {
 		closePopup(popupNewPlace);
+		formNewPlace.reset();
       }
 });
 
 // Закрываем попап по клику на иконку "Крестик"
-btnCloseNewPlace.addEventListener("click", function (event) {
+btnCloseNewPlace.addEventListener("click", function () {
    
    closePopup(popupNewPlace);
+	formNewPlace.reset();
 });
 
 
@@ -178,6 +192,7 @@ const onClickOpenImg = event => {
 popupImge.addEventListener("click", function (event) {
 	if (event.target === this) {
 		closePopup(popupImge)
+		
 	};
 });
 
@@ -195,16 +210,21 @@ const cardsArray = document.querySelectorAll('.usercard__card');
 function createCard (name, link){
 	// клонируем пустую карту
 	const clonedCart = hiddenCart.cloneNode(true);
+
 	// находим элемент с именем карты
 	const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
+	console.log(cardNameElement);
 	// и меняем его содержимое на имя из 
 	cardNameElement.textContent = name;
+	console.log(cardNameElement.textContent);
 	// находим элемент с картинкой карты
 	const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
 	// и меняем его содержимое на картинку из массива
 	cardLinkElement.src = link;
+	console.log(cardLinkElement.src);
 	// добовляем alt
 	cardLinkElement.alt = name;
+	console.log(cardLinkElement.alt);
 	//del
 	clonedCart.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
 	//like
@@ -216,7 +236,7 @@ function createCard (name, link){
 	return clonedCart;	
 }
 
-// добавления карточки в контейнер
+// добавление карточки в контейнер
 function renderCard(card) {
 	const newCard = createCard (card.name, card.link);
 	userCardContainer.prepend(newCard);
@@ -246,3 +266,4 @@ function formSubmitHandlerPlace(evt) {
 }
 
 formNewPlace.addEventListener('submit', formSubmitHandlerPlace);
+

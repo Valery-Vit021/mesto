@@ -44,14 +44,16 @@
 		</footer>
 	</div>
 
-<div div class="popup" id="edit-profile">
+<div class="popup" id="edit-profile">
 	<div class="popup__body">
 		<button type="button" class="popup__close" id="popup-edit-close"></button>
 		<h2 class="popup__title">Редактировать профиль</h2>
 		<form class="popup__form" name="edit-profile" novalidate>
-			<input class="popup__input popup__input_type_error popup__input_profile_name-user" type="text" name="name" required="required" minlength="2" maxlength="40" placeholder="Имя" value="Жак-Ив Кусто"> 
-			<input class="popup__input popup__input_type_error popup__input_profile_about-me" type="text" name="about__me" required="required" minlength="2" maxlength="200" placeholder="Немного о себе" value="Исследователь океан">
-			<button class="popup__btn" type="submit">Сохранить</button>
+			<input class="popup__input popup__input_profile_name-user" id="user-name-input" type="text" name="name" required="required" minlength="2" maxlength="40" placeholder="Имя" value="Жак-Ив Кусто"> 
+			<span class="error" id="user-name-input-error"></span>
+			<input class="popup__input popup__input_profile_about-me" id="about-user-input" type="text" name="about__me" required="required" minlength="2" maxlength="200" placeholder="Немного о себе" value="Исследователь океан">
+			<span class="error" id="about-user-input-error"></span>
+			<button class="popup__btn" type="submit" disabled>Сохранить</button>
 		</form>	
 	</div>
 </div>
@@ -60,9 +62,11 @@
 		<button type="button" class="popup__close" id="popup-new-place-close"></button>
 		<h2 class="popup__title">Новое место</h2>
 		<form class="popup__form" name="new-place-form" novalidate>
-			<input class="popup__input popup__input_type_error popup__input_new-place_name" type="text" name="name-place" required="required" placeholder="Название" value="">
-			<input class="popup__input popup__input_type_error popup__input_new-place_link" type="url" name="link" required="required" placeholder="Ссылка на кртинку" value="">
-			<button class="popup__btn" id="btn-addw-card" type="submit">Создать</button>
+			<input class="popup__input popup__input_new-place_name" id="name-place" type="text" name="name-place" required="required" minlength="2" maxlength="30" placeholder="Название" value="">
+			<span class="error" id="name-place-error"></span>
+			<input class="popup__input popup__input_new-place_link" id="link-img-place" type="url" name="link" required="required" placeholder="Ссылка на кртинку" value="">
+			<span class="error" id="link-img-place-error"></span>
+			<button class="popup__btn" id="btn-addw-card" type="submit" disabled>Создать</button>
 		</form>	
 	</div>
 </div>
@@ -73,7 +77,10 @@
 		<p class="popup__name-img"></p>
 	</div>
 </div>
+
+<script src="./validate.js"></script>
  <script src="./index.js"></script> 
+ <!--<script src="./test2.js"></script></script>-->
 </body>
 </html>
 

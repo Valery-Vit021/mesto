@@ -1,20 +1,21 @@
 .popup__btn {
-  min-width: 100%;
-  min-height: 50px;
-  background-color: black;
-  color: white;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  border-radius: 2px;
-  border: 0;
-  margin: 48px auto 37px;
+	min-width: 100%;
+	min-height: 50px;
+	background-color: transparent;
+	color: rgba(0, 0, 0, 0.1);
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+	border-radius: 2px;
+	border: 1px solid rgba(0, 0, 0,  0.1);
+	margin: 22px auto 37px;
 }
+
 
 .popup__btn:hover {
   opacity: 0.8;
   transition: 0.3s;
-  cursor: pointer;
+  
 }
 
 @media screen and (max-width: 650px) {
@@ -22,5 +23,6 @@
     min-height: 46px;
     font-size: 14px;
     line-height: 17px;
+	 margin-top: 22px;
   }
 }
