@@ -56,7 +56,7 @@ function validateField (input) {
 		// Если проходит, скроем
 		hideInputError(input);
 	 }
-	errorElement.textContetnt = input.validationMessage;
+	errorElement.textContent = input.validationMessage;
 	
 }
 
