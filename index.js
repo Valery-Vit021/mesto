@@ -229,6 +229,7 @@ function createCard (name, link){
 	//превью
 	clonedCart.querySelector('.usercard__img-cards').addEventListener('click', onClickOpenImg);
 
+	
 	return clonedCart;	
 }
 
@@ -236,11 +237,13 @@ function createCard (name, link){
 function renderCard(card) {
 	const newCard = createCard (card.name, card.link);
 	userCardContainer.prepend(newCard);
+	setActiveButtonState(addButton, false);
 }
 
 // Проходим по массиву данных для карточек
 initialCards.forEach(card => {
 	renderCard(card);
+	
 });
 
 
@@ -252,13 +255,15 @@ function formSubmitHandlerPlace(evt) {
 	const cardObject = {};
     cardObject.name = cardNameInput.value;
     cardObject.link = cardLinkInput.value;
-
+	 
 	renderCard(cardObject);
-
+	
   closePopup(popupNewPlace);
-
+  
   formNewPlace.reset();
- 
+  
+  
+  
 }
 
 formNewPlace.addEventListener('submit', formSubmitHandlerPlace);

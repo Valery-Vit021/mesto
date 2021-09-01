@@ -40,7 +40,10 @@ function validFiel(input) {
 		return false;	
 	}
 
+
 	return input.checkValidity();
+
+	
 }
 
 function validateField (input) {
@@ -53,7 +56,7 @@ function validateField (input) {
 		// Если проходит, скроем
 		hideInputError(input);
 	 }
-	errorElement.innerText = input.validationMessage;
+	errorElement.textContetnt = input.validationMessage;
 	
 }
 
