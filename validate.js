@@ -1,21 +1,27 @@
-const formElements = document.querySelector('.popup__form');
-const formInput = formElements.querySelector('.popup__input');
+const initialsConfig = {
+	formSelector: '.popup__form',
+	inputSelector: '.popup__input',
+	submitButtonSelector: '.popup__btn',
+	inactiveButtonClass: 'popup__btn_valid',
+	inputErrorClass: 'popup__input_type_error',
+	errorClass: 'error_active',
+ }
 
  // Функция, которая добавляет класс с ошибко
  const showInputError = (formElement, input, errorMessage) => {
 	const errorElement = document.querySelector(`#${input.id}-error`);
-	input.classList.add('popup__input_type_error');
+	input.classList.add(initialsConfig.inputErrorClass);
 	// Показываем сообщение об ошибке
 	errorElement.textContent = errorMessage;
-	errorElement.classList.add('error_active');
+	errorElement.classList.add(initialsConfig.errorClass);
  };
 
 // Функция, которая удаляет класс с ошибкой
 const hideInputError = (formElement, input) => {
 	const errorElement = document.querySelector(`#${input.id}-error`);
-	input.classList.remove('popup__input_type_error');
+	input.classList.remove(initialsConfig.inputErrorClass);
 	 // Скрываем сообщение об ошибке
-	 errorElement.classList.remove('error_active');
+	 errorElement.classList.remove(initialsConfig.errorClass);
 	 errorElement.textContent = '';
  };
 
@@ -50,29 +56,30 @@ const toggleButtonState = (inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.classList.remove('popup__btn_valid');
+    buttonElement.classList.remove(initialsConfig.inactiveButtonClass);
 	 buttonElement.setAttribute('disabled', true);
   } else {
     // иначе сделай кнопку активной
 	 buttonElement.removeAttribute('disabled');
-	 buttonElement.classList.add('popup__btn_valid');
+	 buttonElement.classList.add(initialsConfig.inactiveButtonClass);
   }
 }; 
 
 function setActiveButtonState(button, state){
 	if(state){
 		button.removeAttribute('disabled');
-		button.classList.add('popup__btn_valid');
+		button.classList.add(initialsConfig.inactiveButtonClass);
 		return;
 		
 	}
 
-	button.classList.remove('popup__btn_valid');
+	button.classList.remove(initialsConfig.inactiveButtonClass);
 	button.setAttribute('disabled', true);
 		
 }
 
-const allInpout = document.querySelectorAll('.popup__input');
+const allInpout = document.querySelectorAll(initialsConfig.inputSelector);
+
 const resetSppanError = () => {
 allInpout.forEach(input => {
 	hideInputError(formElement, input);
@@ -82,8 +89,9 @@ allInpout.forEach(input => {
 const setEventListeners = (formElement) => {
 	// Находим все поля внутри формы,
 	// сделаем из них массив методом Array.from
-	const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-	const buttonElement = formElement.querySelector('.popup__btn');
+	const inputList = Array.from(formElement.querySelectorAll(initialsConfig.inputSelector));
+	
+	const buttonElement = formElement.querySelector(initialsConfig.submitButtonSelector);
  
 	// Обойдём все элементы полученной коллекции
 	inputList.forEach((input) => {
@@ -101,7 +109,7 @@ const setEventListeners = (formElement) => {
 const enableValidation = () => {
 	// Найдём все формы с указанным классом в DOM,
 	// сделаем из них массив методом Array.from
-	const formList = Array.from(document.querySelectorAll('.popup__form'));
+	const formList = Array.from(document.querySelectorAll(initialsConfig.formSelector));
  
 	// Переберём полученную коллекцию
 	formList.forEach((formElement) => {
@@ -115,8 +123,8 @@ const enableValidation = () => {
 	  setEventListeners(formElement);
 	});
  };
-
+ 
 // Вызовем функцию
-enableValidation(); 
+enableValidation(initialsConfig); 
 
 
