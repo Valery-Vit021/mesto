@@ -1,3 +1,4 @@
+//import {Card} from './src/Card';
 //Записываем содержимое заголовков в поля
 // Заголовки
 const profileName = document.querySelector(".usercard__name-user");
@@ -24,7 +25,8 @@ const userCardContainer = document.querySelector('.usercard__content'); //куд
 // Нахожу кнопку 'создать'
 const addButton = document.querySelector('#btn-add-card'); //кнопка добавить
 // Находим пустую карточку
-const hiddenCart = document.querySelector('.usercard__blank-card').content;
+const hiddenCardSelector = '.usercard__blank-card';
+const hiddenCart = document.querySelector(hiddenCardSelector).content;
 // Находим форму в DOM
 const formNewPlace = document.querySelector("form[name=new-place-form]");
 // находим input с именем карты
@@ -80,7 +82,7 @@ function closePopupClickEsc(evt) {
 	if (evt.key === 'Escape') {
 	  closePopup(activePopup);
 	}
- };
+};
 
 
 // Обработчик «отправки» формы, хотя пока
@@ -133,6 +135,7 @@ btnCloseNewPlace.addEventListener("click", function () {
 
 //Cards
 
+
 const initialCards = [
 	{
 		 name: 'Аланский Успенский мужской монастырь',
@@ -161,33 +164,6 @@ const initialCards = [
 ];
 
 
-//del and like
-const onClickDelete = event => {
-	const deleteButton = event.currentTarget;
-	const deletingCard = deleteButton.closest('.usercard__card');
-	
-	deletingCard.remove();
-};
-
-
-// Привязываем обработчик клика на иконку Like
-const onClickLike = event => {
-	const likeButton = event.currentTarget;
-	 likeButton.classList.toggle('usercard__like_active');
-};
-
-// Popup place img
-
-const onClickOpenImg = event => {
-	const clickImg = event.currentTarget;
-	const clikedCard = clickImg.closest('.usercard__card');
-	document.querySelector('#popup-new-place-img').querySelector('.popup__img').src = clikedCard.querySelector('.usercard__img-cards').src;
-	document.querySelector('#popup-new-place-img').querySelector('.popup__name-img').textContent = clikedCard.textContent;
-	document.querySelector('#popup-new-place-img').querySelector('.popup__img').alt =clikedCard.querySelector(".usercard__name-cards").textContent;
-	openPopup(popupImge);
-};
-
-
 // Закрываем попап по клику вне его
 popupImge.addEventListener("click", function (event) {
 	if (event.target === this) {
@@ -203,48 +179,16 @@ btnClosePopupImg.addEventListener("click", function (event) {
 
 // Найдём все карточки
 const cardsArray = document.querySelectorAll('.usercard__card');
+ function renderCard (card) {
+	userCardContainer.prepend(card);
+ }
 
-
-// Добовляем карточки 
-
-function createCard (name, link){
-	// клонируем пустую карту
-	const clonedCart = hiddenCart.cloneNode(true);
-
-	// находим элемент с именем карты
-	const cardNameElement = clonedCart.querySelector('.usercard__name-cards');
-	// и меняем его содержимое на имя из 
-	cardNameElement.textContent = name;
-		// находим элемент с картинкой карты
-	const cardLinkElement = clonedCart.querySelector('.usercard__img-cards');
-	// и меняем его содержимое на картинку из массива
-	cardLinkElement.src = link;
-		// добовляем alt
-	cardLinkElement.alt = name;
-		//del
-	clonedCart.querySelector('.usercard__btn-delete').addEventListener('click', onClickDelete);
-	//like
-	const likeButton = clonedCart.querySelector('.usercard__like');
-	likeButton.addEventListener('click', onClickLike);
-	//превью
-	clonedCart.querySelector('.usercard__img-cards').addEventListener('click', onClickOpenImg);
-
-	
-	return clonedCart;	
-}
-
-// добавление карточки в контейнер
-function renderCard(card) {
-	const newCard = createCard (card.name, card.link);
-	userCardContainer.prepend(newCard);
-	setActiveButtonState(addButton, false);
-}
-
-// Проходим по массиву данных для карточек
 initialCards.forEach(card => {
-	renderCard(card);
-	
+	const newCardObject = new Card({name: card.name, link: card.link}, hiddenCardSelector);
+	const newCard = newCardObject.createCard();
+	renderCard(newCard);
 });
+
 
 
 // Обработчик «отправки» формы, хотя пока
@@ -252,19 +196,16 @@ initialCards.forEach(card => {
 function formSubmitHandlerPlace(evt) {
 	evt.preventDefault();
 
-	const cardObject = {};
-    cardObject.name = cardNameInput.value;
-    cardObject.link = cardLinkInput.value;
-	 
-	renderCard(cardObject);
-	
+	const newCard = new Card({name: cardNameInput.value, link:cardLinkInput.value}, 'section.usercard__content > template').createCard(); 
+	renderCard(newCard);
   closePopup(popupNewPlace);
   
   formNewPlace.reset();
-  
-  
+    
   
 }
 
 formNewPlace.addEventListener('submit', formSubmitHandlerPlace);
+
+
 
