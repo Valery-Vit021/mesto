@@ -1,4 +1,3 @@
-//import {Card} from './src/Card';
 //Записываем содержимое заголовков в поля
 // Заголовки
 const profileName = document.querySelector(".usercard__name-user");
@@ -41,14 +40,10 @@ const imgCard = document.querySelector(".usercard__img-cards");
 const popupImge = document.querySelector("#popup-new-place-img");
 const btnClosePopupImg = document.querySelector('#popup-img-close');
 
-
-
-
 function openPopup(popup) {
 	popup.classList.add("popup_opened");
 	document.addEventListener('keydown', closePopupClickEsc);
 }
-
 
 function closePopup(popup) {
 	 popup.classList.remove("popup_opened");
@@ -60,7 +55,7 @@ btnEdit.addEventListener("click", function () {
 	   openPopup(popupEdit);
 		nameInput.value = profileName.textContent;
 		jobInput.value = profileAboutMe.textContent;
-		resetSppanError(popupEdit);
+		validinputEditPopup.resetSppanError();
 });
 
 // Закрываем попап по клику вне его
@@ -84,35 +79,34 @@ function closePopupClickEsc(evt) {
 	}
 };
 
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
+
 function formSubmitHandler(evt) {
-    evt.preventDefault();
+	evt.preventDefault();
 
 // Получите значение полей jobInput и nameInput из свойства value
-    const nameUser = nameInput.value;
-    const aboutUser = jobInput.value;
+	const nameUser = nameInput.value;
+	const aboutUser = jobInput.value;
 
 // Вставьте новые значения с помощью textContent
-    profileName.textContent = nameUser;
-    profileAboutMe.textContent = aboutUser;
-
-    closePopup(popupEdit);
+	profileName.textContent = nameUser;
+	profileAboutMe.textContent = aboutUser;
+	
+	closePopup(popupEdit);
+	
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
-
-
-// Управление popup new place
+/*      Управление popup new place          */ 
 
 //Открываем попап по клику на иконку "+"
 btnNewPlace.addEventListener("click", function () {
 	openPopup(popupNewPlace);
-	resetSppanError(popupNewPlace);
+	validInputAddPopup.resetSppanError();
 });
 
 // Закрываем попап по клику вне его
@@ -190,22 +184,26 @@ initialCards.forEach(card => {
 });
 
 
-
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function formSubmitHandlerPlace(evt) {
 	evt.preventDefault();
-
+	
 	const newCard = new Card({name: cardNameInput.value, link:cardLinkInput.value}, 'section.usercard__content > template').createCard(); 
 	renderCard(newCard);
+		
   closePopup(popupNewPlace);
   
   formNewPlace.reset();
-    
+  
   
 }
-
 formNewPlace.addEventListener('submit', formSubmitHandlerPlace);
 
 
+/* Валидация  */
 
+const validInputAddPopup = new FormValidator(initialsConfig, popupNewPlace);
+validInputAddPopup.enableValidation();
+const validinputEditPopup = new FormValidator(initialsConfig, popupEdit);
+validinputEditPopup.enableValidation();
