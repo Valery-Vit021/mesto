@@ -1,21 +1,20 @@
-const initialsConfig = {
+export const validationConfig = {
 	formSelector: '.popup__form',
 	inputSelector: '.popup__input',
 	submitButtonSelector: '.popup__btn',
 	inactiveButtonClass: 'popup__btn_valid',
 	inputErrorClass: 'popup__input_type_error',
 	errorClass: 'error_active',
- }
+ };
 
-
-class FormValidator {
-	constructor(confing, formElement){
+export default class FormValidator {
+	constructor(config, formElement){
 		this._formElement = formElement;
-		this._inputSelector = confing.inputSelector;
-		this._submitButtonElement = this._formElement.querySelector(confing.submitButtonSelector);
-		this._inactiveButtonClass = confing.inactiveButtonClass;
-		this._inputErrorClass = confing.inputErrorClass;
-		this._errorClass = confing.errorClass;
+		this._inputSelector = config.inputSelector;
+		this._submitButtonElement = this._formElement.querySelector(config.submitButtonSelector);
+		this._inactiveButtonClass = config.inactiveButtonClass;
+		this._inputErrorClass = config.inputErrorClass;
+		this._errorClass = config.errorClass;
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
 	}
 

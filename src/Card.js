@@ -1,4 +1,7 @@
-class Card {
+import {previewImg, previewName, popupImage,} from '../utils/constants.js';
+import {openPopup} from '../utils/utils.js';
+
+export default class Card {
 	constructor(data, cardTemplateSelector){
 		this._name = data.name;
 		this._link = data.link;
@@ -8,10 +11,10 @@ class Card {
 	createCard() {
 		this._element = this._cloneCard();
       this._setEventListeners();
-
+		this.cardImg = this._element.querySelector('.usercard__img-cards');
 		this._element.querySelector('.usercard__name-cards').textContent = this._name;
-		this._element.querySelector('.usercard__img-cards').alt = this._name;
-		this._element.querySelector('.usercard__img-cards').src = this._link;
+		this.cardImg.alt = this._name;
+		this.cardImg.src = this._link;
 
 		return this._element;
 	}
@@ -28,7 +31,9 @@ class Card {
 		this._element.querySelector('.usercard__like').addEventListener('click',  this._onClickLike);
 
 		//preview
-		this._element.querySelector('.usercard__img-cards').addEventListener('click',  this._onClickOpenImg);
+		this._element.querySelector('.usercard__img-cards').addEventListener('click', () => {
+			this._onClickOpenImg(this.cardImg);
+	  });
 	}
 	
 	_onClickDelete () {
@@ -39,11 +44,11 @@ class Card {
 		this.classList.toggle('usercard__like_active');
 	}
 
-	_onClickOpenImg() {
-		openPopup(popupImge);
-		document.querySelector('#popup-new-place-img').querySelector('.popup__img').src = this.src;
-		document.querySelector('#popup-new-place-img').querySelector('.popup__name-img').textContent = document.querySelector('.usercard__name-cards').textContent;
-		document.querySelector('#popup-new-place-img').querySelector('.popup__img').alt = document.querySelector('.usercard__name-cards').textContent;
+	_onClickOpenImg(cardImg) {
+		openPopup(popupImage);
+		previewImg.src = cardImg.src;
+		previewName.textContent = cardImg.alt;
+		previewImg.alt = cardImg.alt;
 	}
 
 	
