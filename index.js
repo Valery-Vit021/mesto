@@ -10,10 +10,10 @@ import {validationConfig} from  "./src/FormValidator.js";
 
 // Открываем попап по клику на иконку "Карандаш"
 btnEdit.addEventListener("click", function () {
-	   openPopup(popupEdit);
-		nameInput.value = profileName.textContent;
-		jobInput.value = profileAboutMe.textContent;
-		validatorEditProfile.resetSppanError();
+	openPopup(popupEdit);
+	nameInput.value = profileName.textContent;
+	jobInput.value = profileAboutMe.textContent;
+	validatorEditProfile.resetSppanError();
 });
 
 // Закрываем попап по клику вне его
@@ -78,7 +78,6 @@ btnCloseNewPlace.addEventListener("click", function () {
 	formNewPlace.reset();
 });
 
-
 /* РАБОТА С КАРТОЧКАМИ */
 
 // Закрываем попап по клику вне его
@@ -94,7 +93,6 @@ btnClosePopupImg.addEventListener("click", function (event) {
 	closePopup(popupImage);
 });
 
-
 function renderCard (card) {
 	userCardContainer.prepend(card);
 }
@@ -107,16 +105,11 @@ initialCards.forEach(card => {
 // она никуда отправляться не будет
 function submitAddCardForm(evt) {
 	evt.preventDefault();
-	
 	addCard(cardNameInput.value, cardLinkInput.value, 'section.usercard__content > template'); 
-			
-  closePopup(popupNewPlace);
-  
-  formNewPlace.reset();
-  
+	closePopup(popupNewPlace);
+    formNewPlace.reset();
 }
 formNewPlace.addEventListener('submit', submitAddCardForm);
-
 
 /* Валидация  */
 
