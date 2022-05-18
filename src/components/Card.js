@@ -1,11 +1,10 @@
-import {previewImg, previewName, popupImage,} from '../utils/constants.js';
-import {openPopup} from '../utils/utils.js';
 
 export default class Card {
-	constructor(data, cardTemplateSelector){
+	constructor({data, handleCardClick}, cardTemplateSelector){
 		this._name = data.name;
 		this._link = data.link;
 		this._cardTemplate = document.querySelector(cardTemplateSelector);
+		this._handleCardClick = handleCardClick;
 	}
 	
 	createCard() {
@@ -31,9 +30,7 @@ export default class Card {
 		this._element.querySelector('.usercard__like').addEventListener('click',  this._onClickLike);
 
 		//preview
-		this._element.querySelector('.usercard__img-cards').addEventListener('click', () => {
-			this._onClickOpenImg(this.cardImg);
-	  });
+		this._element.querySelector('.usercard__img-cards').addEventListener('click', this._handleCardClick.bind(this));
 	}
 	
 	_onClickDelete () {
@@ -44,13 +41,5 @@ export default class Card {
 		this.classList.toggle('usercard__like_active');
 	}
 
-	_onClickOpenImg(cardImg) {
-		openPopup(popupImage);
-		previewImg.src = cardImg.src;
-		previewName.textContent = cardImg.alt;
-		previewImg.alt = cardImg.alt;
-	}
-
-	
 };
 

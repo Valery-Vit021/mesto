@@ -1,12 +1,3 @@
-export const validationConfig = {
-	formSelector: '.popup__form',
-	inputSelector: '.popup__input',
-	submitButtonSelector: '.popup__btn',
-	inactiveButtonClass: 'popup__btn_valid',
-	inputErrorClass: 'popup__input_type_error',
-	errorClass: 'error_active',
- };
-
 export default class FormValidator {
 	constructor(config, formElement){
 		this._formElement = formElement;
@@ -23,15 +14,16 @@ export default class FormValidator {
 		input.classList.add(this._inputErrorClass);
 		// Показываем сообщение об ошибке
 		errorElement.textContent = errorMessage;
-		errorElement.classList.add(this._errorClass);
+		errorElement.classList.add(this._errorClass);//подсвет красным
 	};
 
 	_hideInputError = (input) => {
 		const errorElement = this._formElement.querySelector(`#${input.id}-error`);
 		input.classList.remove(this._inputErrorClass);
 		 // Скрываем сообщение об ошибке
-		 errorElement.classList.remove(this._errorClass);
 		 errorElement.textContent = '';
+		 // убираем подсветку
+		  errorElement.classList.remove(this._errorClass);
 	};
 
 	_validateField (input) {
