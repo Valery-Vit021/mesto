@@ -3,18 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./pages/index.css">
+	
 	<title>Mesto.Russia</title>
 </head>
 <body class="page">
 	<div class="content">
 		<header class="header">
-			<img class="header__logo" src="./img/logo-header.svg" alt="Ллоготип Mesto">
+			<img class="header__logo" src="<%=require('./img/logo-header.svg')%>" alt="Логотип Mesto">
 		</header>
 
 		<main class="usercard">			
 				<section class="usercard__header">
-						<img class="usercard__avatar" src="./img/avatar.jpg" alt="">
+						<img class="usercard__avatar" src="<%=require('./img/avatar.jpg')%>" alt="">
 						<div class="usercard__profile">
 						<div class="usercard__header-info">
 							<h1 class="usercard__name-user">Жак-Ив Кусто</h1>
@@ -78,7 +78,6 @@
 	</div>
 </div>
 
-	   <script type="module" src="pages/index.js"></script> 
 </body>
 </html>
 

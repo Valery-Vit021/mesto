@@ -1,0 +1,39 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "* Редактирование имени и информации о себе\r * закрытие и открытие popup нажатием на:\r    *  крестик\r \t*  оверлэй\r \t*  кнопку Esc\r * добавление новой карточки\r *  удаление карточки\r * возможность ставить и снимать лайк\r * живую валидацию форм",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valery-Vit021/mesto.git"
+  },
+  "author": "Valery Vit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valery-Vit021/mesto/issues"
+  },
+  "homepage": "https://github.com/Valery-Vit021/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.8",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "core-js": "^3.22.5"
+  }
+}

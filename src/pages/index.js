@@ -7,6 +7,7 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {validationConfig} from '../utils/validationConfig.js';
 import {initialCards} from '../utils/initial-сards.js';
+import './index.css';
 
 //данные пользователя
 const userInfo = new UserInfo({nameSelector:".usercard__name-user", aboutSelector:".usercard__about-me"});

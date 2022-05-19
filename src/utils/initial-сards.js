@@ -1,26 +1,33 @@
+import alanHolyImg from './../img/Alan_Holy_Dormition_Monastery.jpg';
+import totorsImg from './../img/Тоторс.jpg';
+import townDeadImg from './../img/town-of-the-dead.jpg';
+import tseyGorgeImg from './../img/Tsey_Gorge.jpg';
+import karaugomImg from './../img/Караугом.jpg';
+import vladikavkazImg from './../img/vladikavkaz.jpg';
+
 export const initialCards = [
 	{
 		 name: 'Аланский Успенский мужской монастырь',
-		 link: './img/Alan_Holy_Dormition_Monastery.jpg'
+		 link: alanHolyImg
 	},
 	{
 		 name: 'Тоторс',
-		 link: './img/Тоторс.jpeg'
+		 link: totorsImg
 	},
 	{
 		 name: 'Даргавс',
-		 link: './img/town-of-the-dead.jpg'
+		 link: townDeadImg
 	},
 	{
 		 name: 'Цейское ущелье',
-		 link: './img/Tsey_Gorge.jpg'
+		 link: tseyGorgeImg
 	},
 	{
 		 name: 'Караугом',
-		 link: './img/Караугом.jpeg',
+		 link: karaugomImg
 	},
 	{
 		 name: 'Владикавказ',
-		 link: './img/vladikavkaz.jpeg'
+		 link: vladikavkazImg
 	},
 ];
