@@ -18,7 +18,10 @@ const popupAdd = new PopupWithForm("#popup-new-place", addFormSubmitHandler);
 //popup edit 
 const popupEdit = new PopupWithForm("#edit-profile", editFormSubmitHandler);
 //card section
-const cardSection = new Section({items: initialCards, renderer: createCard}, ".usercard__content");
+const cardSection = new Section({
+	items: initialCards, 
+	renderer: (item) => cardSection.addItems(createCard(item
+		))}, ".usercard__content");
 
  
 

@@ -51,5 +51,6 @@ module.exports = {
       compress: true,
       port: 8081,
       open: true
-   }
+   },
+   devtool: 'inline-source-map',
 };

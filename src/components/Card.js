@@ -19,7 +19,7 @@ export default class Card {
 	}
 
 	_cloneCard() {
-		return this._cardTemplate.content.firstElementChild.cloneNode(true);
+		return this._cardTemplate.content.querySelector('.usercard__card').cloneNode(true);
 	}    
 
 	_setEventListeners() {
@@ -35,6 +35,7 @@ export default class Card {
 	
 	_onClickDelete () {
 		this._element.remove();
+		this._element = null;
 	}
 
 	_onClickLike() {
